@@ -1,0 +1,60 @@
+server:
+  port: 9000
+spring:
+
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowCredentials: true
+            allowedOrigins: "http://localhost:5173"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+
+
+#      routes:
+#        - id: manager                        # 路由唯一标识
+#        uri: lb://manager_server        # 路由指向目的地URL或服务名，客户端请求最终被转发到的微服务
+#        predicates:
+#          - Path=/manager/**                # 断言：以manager开头的请求都负载到manager_server服务
+#        filters:
+#          - RewritePath=/manager/(?<segment>.*), /$\{segment} # 过滤器：过滤掉url里的manager,例如http://ip:port/manager/test -> http://ip:port/test
+#        order: 5                        # 用于多个Route之间的排序，数值越小越靠前，匹配优先级越高
+#        gateway:
+#          routes:
+#            - id: manager
+#              uri: https://manager_server
+#              predicates:
+#                - After=2017-01-20T17:42:47.789-07:00[America/Denver]    # 时间点后匹配
+#            - Before=2017-01-20T17:42:47.789-07:00[America/Denver]    # 时间点前匹配
+#            - Between=2017-01-20T17:42:47.789-07:00[America/Denver],2017-01-21T17:42:47.789-07:00[America/Denver]    # 时间区间匹配
+#            - Cookie=chocolate, ch.p                        # 指定cookie正则匹配
+#            - Header=X-Request-Id, \d+                        # 指定Header正则匹配
+#            - Host=**.somehost.org,**.anotherhost.org        # 请求Host匹配
+#            - Method=GET,POST                                # 请求Method匹配指定请求方式
+#            - Path=/red/{segment},/blue/{segment}            # 请求路径正则匹配
+#            - Query=green                                    # 请求包含某参数
+#            - Query=red, gree.                                # 请求包含某参数并且参数值匹配正则表达式(匹配red;green,greet,gree...)
+#            - RemoteAddr=192.168.1.1/24                        # 远程地址匹配
+#
+#              # 设置分组和权重，按照路由权重选择同一个分组中的路由
+#                - id: preManager1
+#                uri: https://preManager1
+#                predicates:
+#            - Weight=group1, 2
+#                - id: preManager2
+#                uri: https://preManager2
+#                predicates:
+#            - Weight=group1, 8
+
+
+  application:
+    name: gateway
+
+

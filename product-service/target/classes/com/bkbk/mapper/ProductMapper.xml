@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bkbk.mapper.ProductMapper">
+
+    <resultMap id="base" type="com.bkbk.entity.Category">
+        <id column="id" property="id"></id>
+        <result column="parent_id" property="parentId"></result>
+        <result column="name" property="name"></result>
+    </resultMap>
+
+
+    <resultMap id="rootCategory" type="com.bkbk.entity.Category">
+        <id column="id" property="id"></id>
+        <result column="parent_id" property="parentId"></result>
+        <result column="name" property="name"></result>
+        <collection property="children" select="listByParentId" column="id"></collection>
+    </resultMap>
+
+    <sql id="myCategory" >
+        id,name,parent_id
+    </sql>
+
+
+    <select id="listRoot"  resultMap="rootCategory">
+        select <include refid="myCategory"></include> from lds_product_category
+                where parent_id = 0
+    </select>
+
+    <select id="listByParentId" resultMap="base">
+        select <include refid="myCategory"></include> from lds_product_category
+        where parent_id = #{id}
+    </select>
+
+
+</mapper>

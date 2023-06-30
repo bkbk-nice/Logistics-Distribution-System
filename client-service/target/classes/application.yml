@@ -1,0 +1,28 @@
+server:
+  port: 11001
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lds?serverTimezone=GMT%2B8&characterEncoding=utf8&useSSL=true
+    username: client
+    password: client
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+#    sentinel:
+#      transport:
+#        dashboard: localhost:8080
+  application:
+    name: client-service
+logging:
+  level:
+    com.bkbk.mapper: trace
+
+#ftp:
+#  hostname: 192.168.78.134
+#  port: 21
+#  encoding: utf-8
+#  username: ftpuser
+#  password: xxyf1126@F
+#  dir: /home/ftpuser/store
+#  accessUri: http://192.168.78.134:8888/
