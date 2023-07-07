@@ -9,4 +9,7 @@ public interface ProductService {
                     Integer pageNumber,Integer pageSize);
 
     ResultVo getCategory();
+
+
+    ResultVo getProductById(Integer id);
 }

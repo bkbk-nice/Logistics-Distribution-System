@@ -30,15 +30,17 @@ public class ClientServiceImpl implements ClientService {
 
         QueryWrapper<Client> queryWrapper = new QueryWrapper<>();
         if(keyword!=null && !keyword.isEmpty()){
-          //  queryWrapper.select("id","name","phone","email","identity","address","image_url","createtime","updatetime")
-            queryWrapper.like("name", keyword ).or().like("phone",keyword).or().like("identity",keyword);
-        }
+            queryWrapper.select("id","name","phone","email","identity","address","image_url","createtime","updatetime")
 
+             .like("name", keyword ).or().like("phone",keyword).or().like("identity",keyword);
+        }
+        System.out.println("keyword:"+keyword);
 
 
         PageHelper.startPage(pageNumber,pageSize);
 
-        PageInfo pageInfo = new PageInfo( clientMapper.selectdynamic(keyword));
+//        PageInfo pageInfo = new PageInfo( clientMapper.selectdynamic(keyword));
+        PageInfo pageInfo = new PageInfo( clientMapper.selectList(queryWrapper));
 
         return  ResultVo.success(pageInfo);
 

@@ -56,7 +56,7 @@ public class SecureServiceImpl implements SecureService  , UserDetailsService {
         CsVo csvo = new CsVo();
         csvo.setId(cs.getId());
         csvo.setName(cs.getName());
-        csvo.setToken(JwtUtil.generate(cs.getName()));
+        csvo.setToken(JwtUtil.generate(cs.getId().toString()));
 
 
 
@@ -88,7 +88,7 @@ public class SecureServiceImpl implements SecureService  , UserDetailsService {
 
         // 从数据库中查询出用户实体对象
         QueryWrapper<Cs> queryWrapper = new QueryWrapper<Cs>();
-        queryWrapper.eq("name",s);
+        queryWrapper.eq("id",Integer.parseInt(s));
 
         Cs cs = secureMapper.selectOne(queryWrapper);
         // 若没查询到一定要抛出该异常，这样才能被Spring Security的错误处理器处理

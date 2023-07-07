@@ -22,29 +22,9 @@ public class SecureController {
         private SecureService secureService;
 
 
-
-//    @Autowired
-//    private AuthenticationManager authenticationManager;
-
-
-
-
     @PostMapping("/login")
     public ResultVo login(String name,String password){
 
-
-        // 生成一个包含账号密码的认证信息
-//        Authentication token = new UsernamePasswordAuthenticationToken(csName ,csPassword);
-//        // AuthenticationManager校验这个认证信息，返回一个已认证的Authentication
-//
-//        System.out.println("2-1");
-//        Authentication authentication = authenticationManager.authenticate(token);
-//        // 将返回的Authentication存到上下文中
-//        System.out.println("2-2");
-//
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-       // return ResultVo.success();
 
         return secureService.login(name,password);
     }

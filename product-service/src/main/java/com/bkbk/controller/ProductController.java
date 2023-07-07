@@ -27,4 +27,11 @@ public class ProductController {
     public ResultVo getCategory(){
         return productService.getCategory();
     }
+
+    @GetMapping("/getDetail")
+    public ResultVo getProductById(Integer id){
+        return productService.getProductById(id);
+    }
+
+
 }
