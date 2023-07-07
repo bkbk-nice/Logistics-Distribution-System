@@ -9,5 +9,7 @@ public interface SubstationService {
 
     ResultVo  getDeliveryman();
 
-    ResultVo chooseDeliveryman(TaskList taskList);
+    ResultVo chooseDeliveryman(Integer id,TaskList taskList);
+
+    ResultVo getProduct(Integer id,TaskList taskList);
 }

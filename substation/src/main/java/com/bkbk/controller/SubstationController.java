@@ -38,17 +38,24 @@ public class SubstationController {
 
         }
 
-
-
     }
 
 
 
     @Transactional
     @PostMapping("/chooseDeliveryman")
-    public ResultVo chooseDeliveryman(@RequestBody TaskList taskList ) {
+    public ResultVo chooseDeliveryman(   @RequestHeader("Authorization") String token,
+                                         @RequestBody TaskList taskList ) {
 
-            return   substationService.chooseDeliveryman(taskList);
+        Claims claims = JwtUtil.parse(token);
+        if (claims == null) {
+            return ResultVo.fail("token错误");
+        }else{
+            String substationId = claims.getSubject();
+            return   substationService.chooseDeliveryman(Integer.parseInt(substationId),taskList);
+
+
+        }
 
     }
 
@@ -60,6 +67,25 @@ public class SubstationController {
 
         return substationService.getDeliveryman();
     }
+
+
+    @Transactional
+    @PostMapping("/getProduct")
+    public ResultVo getProduct(   @RequestHeader("Authorization") String token,
+                                         @RequestBody TaskList taskList ) {
+
+        Claims claims = JwtUtil.parse(token);
+        if (claims == null) {
+            return ResultVo.fail("token错误");
+        }else{
+            String substationId = claims.getSubject();
+            return   substationService.getProduct(Integer.parseInt(substationId),taskList);
+
+
+        }
+
+    }
+
 
 
 }

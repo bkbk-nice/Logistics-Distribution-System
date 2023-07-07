@@ -90,6 +90,8 @@ public class OrderServiceImpl implements OrderService {
         order.setType(orderForm.getType());
         order.setClientId(clientId);
         order.setMainImage(product.getMainImage());
+        order.setStatus(0);
+
         Date now =  new Date();
         order.setCreateTime(now);
         order.setUpdateTime(now);

@@ -20,14 +20,9 @@ public class Order {
     private String phone;
     private String address;
     private String remark;
+    private Integer status;
 
-    public String getMainImage() {
-        return mainImage;
-    }
 
-    public void setMainImage(String mainImage) {
-        this.mainImage = mainImage;
-    }
 
     private String mainImage;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
@@ -41,7 +36,21 @@ public class Order {
 
     public Order() {
     }
+    public Integer getStatus() {
+        return status;
+    }
+    public String getMainImage() {
+        return mainImage;
+    }
 
+    public void setMainImage(String mainImage) {
+        this.mainImage = mainImage;
+    }
+
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
     public Integer getId() {
         return id;
     }
