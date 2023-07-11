@@ -257,12 +257,6 @@ public class ClientServiceImpl implements ClientService {
     }
 
     public void delLastAvatar(Integer id){
-        Client client = clientMapper.selectById(id);
-        if(client.getImageDelete()==null){
-            return;
-        }else{
-
-        }
 
     }
 
