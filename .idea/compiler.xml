@@ -9,13 +9,14 @@
         <module name="common" />
         <module name="cs-service" />
         <module name="substation" />
+        <module name="deliveryman" />
         <module name="product-service" />
-        <module name="central-warehouse" />
         <module name="gateway" />
         <module name="client-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="central-warehouse" target="1.8" />
       <module name="dispatch" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -25,6 +26,7 @@
       <module name="client-service" options="-parameters" />
       <module name="common" options="" />
       <module name="cs-service" options="-parameters" />
+      <module name="deliveryman" options="-parameters" />
       <module name="dispatch" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="product-service" options="-parameters" />

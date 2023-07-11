@@ -1,6 +1,7 @@
 package com.bkbk.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.bkbk.entity.Product;
 import com.bkbk.mapper.ProductMapper;
 import com.bkbk.service.ProductService;
 import com.bkbk.vo.ResultVo;
@@ -50,5 +51,25 @@ public class ProductServiceImpl implements ProductService {
                 .eq("id",id);
         return ResultVo.success(productMapper.selectOne(queryWrapper));
 
+    }
+
+    @Override
+    public ResultVo homeForCenter(String keyword, Integer categoryId, Integer pageNumber, Integer pageSize) {
+        QueryWrapper<Product> queryWrapper = new QueryWrapper<Product>();
+        if(keyword!=null&&keyword.length()!=0){
+            queryWrapper.select("id","name","category_id","price","main_image","sub_title")
+            .like("name",keyword).or().like("id",keyword);
+           // queryWrapper.like("id", keyword ).or().like("order_id",keyword);
+        }else if(categoryId>0) {
+            queryWrapper.select("id","name","category_id","price","main_image","sub_title")
+                    .eq("category_id",categoryId);
+        }else {
+            queryWrapper.select("id","name","category_id","price","main_image","sub_title");
+        }
+
+        //分页信息
+
+
+        return ResultVo.success(productMapper.selectList(queryWrapper));
     }
 }

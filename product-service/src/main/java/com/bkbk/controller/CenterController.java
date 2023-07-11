@@ -2,6 +2,7 @@ package com.bkbk.controller;
 
 
 import com.bkbk.entity.AllocationList;
+import com.bkbk.entity.Inventory;
 import com.bkbk.entity.TaskList;
 import com.bkbk.service.CenterService;
 import com.bkbk.vo.ResultVo;
@@ -41,6 +42,14 @@ public class CenterController {
 
 
 
+
+    @Secured( {"ROLE_admin" , "ROLE_center"} )
+    @GetMapping("/inventory")
+    public ResultVo inventory( Integer productId ) {
+
+        return   centerService.inventory(productId);
+
+    }
 
 
 }

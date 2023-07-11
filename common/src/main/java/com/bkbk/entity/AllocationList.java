@@ -15,13 +15,10 @@ public class AllocationList {
     private Integer status;
     private Integer csId;
 
-    public Integer getCsId() {
-        return csId;
-    }
+    private String productName;
+    private  Integer productId;
+    private  Integer num;
 
-    public void setCsId(Integer csId) {
-        this.csId = csId;
-    }
 
     private  String substationName;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
@@ -30,6 +27,38 @@ public class AllocationList {
     private Date updateTime;
 
     public AllocationList() {
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
+    public Integer getCsId() {
+        return csId;
+    }
+
+    public void setCsId(Integer csId) {
+        this.csId = csId;
     }
 
     public Integer getId() {

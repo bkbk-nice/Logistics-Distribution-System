@@ -1,6 +1,7 @@
 package com.bkbk.controller;
 
 
+import com.bkbk.entity.Order;
 import com.bkbk.entity.form.OrderForm;
 
 import com.bkbk.service.OrderService;
@@ -9,6 +10,7 @@ import com.bkbk.vo.ResultVo;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.BindingResult;
 import javax.validation.Valid;
@@ -38,6 +40,7 @@ public class OrderController {
     }
 
 
+    @Transactional
     @PostMapping("/createOrder")
     public ResultVo createOrder(@RequestHeader("Authorization") String token, @RequestBody @Valid OrderForm orderForm, BindingResult bindingResult)  {
 
@@ -71,14 +74,14 @@ public class OrderController {
 
 
 
-    @GetMapping("/searchOrderDetail")
-    public ResultVo searchOrderDetail(@RequestHeader("Authorization") String token, Integer orderId)  {
+    @GetMapping("/getOrderDetail")
+    public ResultVo searchOrderDetail(@RequestHeader("Authorization") String token, Integer id)  {
 
         Claims claims = JwtUtil.parse(token);
         if (claims != null) {
             String clientid = claims.getSubject();
 
-            return   orderService.searchOrderDetail(Integer.parseInt(clientid),orderId);
+            return   orderService.searchOrderDetail(Integer.parseInt(clientid),id);
         }else{
             return ResultVo.fail("token错误");
         }
@@ -88,5 +91,19 @@ public class OrderController {
 
 
 
+    @Transactional
+    @PostMapping("/makeSureGet")
+    public ResultVo makeSureGet(@RequestHeader("Authorization") String token,  @RequestBody Order order)  {
+
+        Claims claims = JwtUtil.parse(token);
+        if (claims != null) {
+            String clientid = claims.getSubject();
+
+            return   orderService.makeSureGet(Integer.parseInt(clientid),order.getId());
+        }else{
+            return ResultVo.fail("token错误");
+        }
+
+    }
 
 }

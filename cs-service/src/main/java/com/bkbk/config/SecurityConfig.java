@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 注意这里，是允许前端跨域联调的一个必要配置
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 // 指定某些接口不需要通过验证即可访问。登陆、注册接口肯定是不需要认证的
-                .antMatchers("/secure/login", "/secure/register").permitAll()
+                .antMatchers("/secure/login", "/secure/register","/sse/**").permitAll()
                 // 这里意思是其它所有接口需要认证才能访问
                 .anyRequest().authenticated()
                 // 指定认证错误处理器

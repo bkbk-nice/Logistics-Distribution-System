@@ -22,6 +22,16 @@ public class Order {
     private String remark;
     private Integer status;
 
+    public Integer getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(Integer taskId) {
+        this.taskId = taskId;
+    }
+
+    private  Integer taskId;
+
 
 
     private String mainImage;

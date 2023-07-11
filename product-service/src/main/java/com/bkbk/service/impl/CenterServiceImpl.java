@@ -6,6 +6,7 @@ import com.bkbk.entity.AllocationList;
 import com.bkbk.entity.Deliveryman;
 import com.bkbk.entity.TaskList;
 import com.bkbk.mapper.AllocationListMapper;
+import com.bkbk.mapper.InventoryMapper;
 import com.bkbk.service.CenterService;
 import com.bkbk.vo.ResultVo;
 import com.github.pagehelper.PageHelper;
@@ -21,6 +22,9 @@ public class CenterServiceImpl implements CenterService {
 
     @Autowired
     private AllocationListMapper allocationListMapper;
+
+    @Autowired
+    private InventoryMapper inventoryMapper;
     @Override
     public ResultVo getAllocationList(String keyword, Integer pageNumber, Integer pageSize) {
         QueryWrapper<AllocationList> queryWrapper = new QueryWrapper<>();
@@ -55,5 +59,13 @@ public class CenterServiceImpl implements CenterService {
         allocationListMapper.update(null, updateWrapper);
 
         return ResultVo.success();
+    }
+
+    @Override
+    public ResultVo inventory(Integer productId) {
+        QueryWrapper queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("product_id",productId);
+
+        return ResultVo.success(inventoryMapper.selectOne(queryWrapper));
     }
 }

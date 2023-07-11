@@ -12,4 +12,7 @@ public interface ProductService {
 
 
     ResultVo getProductById(Integer id);
+
+    ResultVo homeForCenter(String keyword,Integer categoryId,
+                     Integer pageNumber,Integer pageSize);
 }

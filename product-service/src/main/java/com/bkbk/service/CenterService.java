@@ -10,4 +10,6 @@ public interface CenterService {
 
 
     ResultVo allocationStart(AllocationList allocationList);
+
+    ResultVo inventory(Integer productId);
 }

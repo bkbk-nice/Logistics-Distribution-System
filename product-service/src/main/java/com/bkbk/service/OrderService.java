@@ -3,6 +3,8 @@ package com.bkbk.service;
 import com.bkbk.entity.Order;
 import com.bkbk.entity.form.OrderForm;
 import com.bkbk.vo.ResultVo;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 public interface OrderService {
@@ -19,4 +21,7 @@ public interface OrderService {
 
     //orderId =>detail
     ResultVo searchOrderDetail(Integer clientId,Integer orderId);
+
+    ResultVo   makeSureGet(Integer clientId,Integer orderId);
+
 }

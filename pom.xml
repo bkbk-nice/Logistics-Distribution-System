@@ -21,9 +21,8 @@
         <module>client-service</module>
         <module>cs-service</module>
         <module>product-service</module>
-        <module>dispatch</module>
-        <module>central-warehouse</module>
         <module>substation</module>
+        <module>deliveryman</module>
     </modules>
 
     <properties>
