@@ -4,6 +4,7 @@ SpringCloud  and Vue
 
 后端:https://github.com/bkbk-nice/Logistics-Distribution-System  
 前端:https://github.com/bkbk-nice/study-vue3  
+数据库: /lds_end.sql
 
 启动：  
 1:Nacos(nacos-server-2.1.0)(startup.cmd)   
@@ -22,7 +23,7 @@ module:
 tip:  
 1:涉及图片上传的部分使用smms.app API   
 2:使用SpringSecurity+Jwt对接口进行认证授权  
-3:接口简要说明 https://github.com/bkbk-nice/study-vue3/blob/main/src/api/api.ts 
+3:接口简要说明 https://github.com/bkbk-nice/study-vue3/blob/main/src/api/api.ts   
 4:Spring-cloud-alibaba/Mybatis-plus/Mysql  
 
 
