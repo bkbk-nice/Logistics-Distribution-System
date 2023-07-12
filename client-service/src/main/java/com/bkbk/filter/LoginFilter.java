@@ -40,10 +40,10 @@ public class LoginFilter extends OncePerRequestFilter {
 
             UserDetails user = secureService.loadUserByUsername(clientid);
             // 手动组装一个认证对象
-//            Set<GrantedAuthority> dbAuthsSet = new HashSet<>();
+            Set<GrantedAuthority> dbAuthsSet = new HashSet<>();
 //            //增加一个权限
-//            dbAuthsSet.add(new SimpleGrantedAuthority("ROLE_client"));
-//            Collection<? extends GrantedAuthority> authorities = dbAuthsSet;
+            dbAuthsSet.add(new SimpleGrantedAuthority("ROLE_client"));
+ //           Collection<? extends GrantedAuthority> authorities = dbAuthsSet;
             Authentication authentication = new UsernamePasswordAuthenticationToken(user,
                     user.getPassword(),
                     user.getAuthorities());

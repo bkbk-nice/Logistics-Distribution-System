@@ -37,11 +37,12 @@ public class ClientServiceImpl implements ClientService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private ClientMapper clientMapper;
+
     @Override
     public ResultVo uploadAvatar(MultipartFile file,  Integer id)   {
 
-        delLastAvatar(id);
-
+       // delLastAvatar(id);
+        System.out.println("start upload");
         if (null == file && !file.isEmpty()) {
             return ResultVo.fail("文件为空");
         }
